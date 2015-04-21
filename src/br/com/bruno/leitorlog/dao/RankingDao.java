@@ -98,9 +98,17 @@ public class RankingDao {
 											.setParameter("partida", PartidaDao.objPartida)
 											.getResultList();
 		
+	
+		verificaAward(listaRanking.get(0));
+		
 		return listaRanking;
 	}
 	
-	
+	private void verificaAward(RankingPartida objRanking) {
+		
+		if(objRanking.getQtdMortes() == 0) {
+			objRanking.setAwards(1);
+		}
+	}
 
 }

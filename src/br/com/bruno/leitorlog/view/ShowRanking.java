@@ -12,14 +12,12 @@ public class ShowRanking {
 	public void montaRanking() {
 		
 		RankingDao objDao = new RankingDao();
-		LogPartidaDao objLDao = new LogPartidaDao();
 		
 		List<RankingPartida> listaRanking = objDao.getRanking();
-		RankingPartida objCampeao = listaRanking.get(0);
-		ArmaFavorita objArma = null;
+		
 		
 		System.out.println("---------------------------- RANKING DA PARTIDA ------------------------------------");
-		System.out.println("LUGAR              |JOGADOR            |Matou              |Foi Morto          |Pontos             ");
+		System.out.println("LUGAR              |JOGADOR            |Matou              |Foi Morto          |Pontos              |Awards             ");
 		
 		
 		String saida = "";
@@ -29,11 +27,21 @@ public class ShowRanking {
 					formataCampo(objRanking.getUser()) +  
 					formataCampo(objRanking.getQtdAssassinatos() + "x") +
 					formataCampo(objRanking.getQtdMortes() + "x") +
-					formataCampo(String.valueOf(objRanking.getPontos()));
+					formataCampo(String.valueOf(objRanking.getPontos())) +
+					formataCampo(String.valueOf(objRanking.getAwards()));
 			System.out.println(saida);
 			lugar++;
 		}
 		
+		montaInfoAdicional(listaRanking);
+		
+	}
+	
+	public void montaInfoAdicional(List<RankingPartida> listaRanking) {
+		
+		LogPartidaDao objLDao = new LogPartidaDao();
+		RankingPartida objCampeao = listaRanking.get(0);
+		ArmaFavorita objArma = null;
 		objArma = objLDao.getArmaFavorita(objCampeao.getUser());
 		
 		System.out.println("\n---------------- ARMA FAVORITA DO CAMPEÃO -----------------------");
@@ -42,9 +50,6 @@ public class ShowRanking {
 		
 		System.out.println("\n---------------- STREAK --------------------------");
 		System.out.println(objLDao.maiorSequenciaDeMortes());
-		
-		System.out.println("\n---------------- AWARDS ------------------------");
-		
 		
 	}
 	

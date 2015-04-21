@@ -2,14 +2,14 @@
 23/04/2013 15:36:04 - Roman killed Nick using M16
 23/04/2013 15:36:33 - <WORLD> killed Nick by DROWN
 23/04/2013 15:36:40 - Nick killed Roman using M16
-23/04/2013 15:36:40 - Nick killed Bruno using M17
+23/04/2013 15:36:40 - Nick killed Roman using M17
 23/04/2013 15:36:40 - Roman killed Nick using M17
-23/04/2013 15:36:40 - Nick killed Bruno using M17
+23/04/2013 15:36:40 - Nick killed Roman using M17
 23/04/2013 15:36:40 - Nick killed Roman using M18
 23/04/2013 15:36:40 - Bruno killed Roman using M18
 23/04/2013 15:36:40 - Bruno killed Nick using M19
 23/04/2013 15:36:40 - Bruno killed Roman using M18
 23/04/2013 15:36:40 - Bruno killed Roman using M19
-23/04/2013 15:36:40 - Nick killed Bruno using M18
+23/04/2013 15:36:40 - Nick killed Roman using M18
 23/04/2013 15:36:40 - Roman killed Nick using M18
 23/04/2013 15:39:22 - Match 11348969 has ended
