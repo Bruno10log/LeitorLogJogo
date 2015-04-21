@@ -15,15 +15,20 @@ import javax.persistence.TemporalType;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name="LogPartida.pesquisaQuantidadeMortes", query="select COUNT(l) FROM LogPartida l " +  
+	@NamedQuery(name="LogPartida.findAll", query="select l FROM LogPartida l WHERE l.partida = :partida"),
+	@NamedQuery(name="LogPartida.pesquisaQuantidadeMortes", query="SELECT COUNT(l) FROM LogPartida l " +  
                                                                 "WHERE l.userVitima = :user " +
 																"AND l.partida = :partida"),
 																
-	@NamedQuery(name="LogPartida.pesquisaQuantidadeAssassinatos", query="select COUNT(l) FROM LogPartida l " + 
+	@NamedQuery(name="LogPartida.pesquisaQuantidadeAssassinatos", query="SELECT COUNT(l) FROM LogPartida l " + 
 																	  "WHERE l.userAssassino = :user " +
 																	  "AND l.partida = :partida"),
-	
-	@NamedQuery(name="LogPartida.findAll", query="select l FROM LogPartida l WHERE l.partida = :partida")
+		
+	@NamedQuery(name="LogPartida.pesquisaArmaFavorita", query="SELECT NEW br.com.bruno.leitorlog.consultas.ArmaFavorita(l.modeloArma, COUNT(l)) FROM LogPartida l " +
+															    "WHERE l.partida = :partida " +  
+															    "AND l.userAssassino = :user " +
+															    "GROUP BY l.modeloArma " +
+															    "ORDER BY COUNT(l) desc")
 })
 public class LogPartida {
 	

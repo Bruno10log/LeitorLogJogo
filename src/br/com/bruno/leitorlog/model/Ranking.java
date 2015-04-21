@@ -13,11 +13,12 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
 	@NamedQuery(name="Ranking.findUser", query="SELECT r FROM Ranking r WHERE r.partida = :partida AND r.user = :user"),
 	@NamedQuery(name="Ranking.findAllUsers", query="SELECT r FROM Ranking r WHERE r.partida = :partida"),
-	@NamedQuery(name="Ranking.findRanking", query="SELECT NEW br.com.bruno.leitorlog.model.RankingPartida("
+	@NamedQuery(name="Ranking.findRanking", query="SELECT NEW br.com.bruno.leitorlog.consultas.RankingPartida("
 													+ "r.partida,r.user, r.qtdMatou, r.qtdMorreu, (r.qtdMatou - r.qtdMorreu)) "
 													+ "FROM Ranking r "
 													+ "WHERE r.partida = :partida " 
-													+ "ORDER BY r.qtdMatou - r.qtdMorreu DESC, r.user")
+													+ "ORDER BY r.qtdMatou - r.qtdMorreu DESC, r.user"),
+
 })
 public class Ranking {
 	

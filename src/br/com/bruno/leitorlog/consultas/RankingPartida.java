@@ -1,4 +1,7 @@
-package br.com.bruno.leitorlog.model;
+package br.com.bruno.leitorlog.consultas;
+
+import br.com.bruno.leitorlog.model.Partida;
+import br.com.bruno.leitorlog.model.Ranking;
 
 public class RankingPartida extends Ranking {
 

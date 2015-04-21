@@ -59,11 +59,7 @@ public enum LogDetail implements ILogDetail {
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			
-			ShowRanking objShow = new ShowRanking();
-			
-			objShow.montaRanking();
-			
+
 		}
 		
 	}
