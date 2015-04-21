@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.bruno.leitorlog.consultas.ArmaFavorita;
 import br.com.bruno.leitorlog.consultas.RankingPartida;
+import br.com.bruno.leitorlog.dao.LogPartidaDao;
 import br.com.bruno.leitorlog.dao.RankingDao;
 
 public class ShowRanking {
@@ -11,6 +12,7 @@ public class ShowRanking {
 	public void montaRanking() {
 		
 		RankingDao objDao = new RankingDao();
+		LogPartidaDao objLDao = new LogPartidaDao();
 		
 		List<RankingPartida> listaRanking = objDao.getRanking();
 		RankingPartida objCampeao = listaRanking.get(0);
@@ -32,11 +34,17 @@ public class ShowRanking {
 			lugar++;
 		}
 		
-		objArma = objDao.getArmaFavorita(objCampeao.getUser());
+		objArma = objLDao.getArmaFavorita(objCampeao.getUser());
 		
 		System.out.println("\n---------------- ARMA FAVORITA DO CAMPEÃO -----------------------");
 		System.out.println("Modelo             |Mortes");
 		System.out.println(formataCampo(objArma.getArmaFavorita()) + formataCampo(objArma.getQtdMortes() + "")); 
+		
+		System.out.println("\n---------------- STREAK --------------------------");
+		System.out.println(objLDao.maiorSequenciaDeMortes());
+		
+		System.out.println("\n---------------- AWARDS ------------------------");
+		
 		
 	}
 	

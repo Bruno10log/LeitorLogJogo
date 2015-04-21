@@ -9,7 +9,6 @@ import br.com.bruno.leitorlog.dao.RankingDao;
 import br.com.bruno.leitorlog.data.Acao;
 import br.com.bruno.leitorlog.data.Match;
 import br.com.bruno.leitorlog.file.StructFile;
-import br.com.bruno.leitorlog.view.ShowRanking;
 
 public enum LogDetail implements ILogDetail {
 	

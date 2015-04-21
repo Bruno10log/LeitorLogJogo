@@ -16,7 +16,6 @@ public class Main {
 		
 		objler.ler(objFile);
 		objShow.montaRanking();
-		
-		
+	
 	}
 }

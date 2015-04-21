@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import br.com.bruno.leitorlog.config.ConstantsLog;
-import br.com.bruno.leitorlog.consultas.ArmaFavorita;
 import br.com.bruno.leitorlog.consultas.RankingPartida;
 import br.com.bruno.leitorlog.model.JPAUtil;
 import br.com.bruno.leitorlog.model.Ranking;
@@ -102,18 +101,6 @@ public class RankingDao {
 		return listaRanking;
 	}
 	
-	public ArmaFavorita getArmaFavorita(String user) {
-		
-		EntityManager em = JPAUtil.getEntityManager();
-		
-		ArmaFavorita objArma = (ArmaFavorita) em.createNamedQuery("LogPartida.pesquisaArmaFavorita")
-												.setParameter("partida", PartidaDao.objPartida)
-												.setParameter("user", user)
-												.setMaxResults(1)
-												.getSingleResult();
-												
-									
-												
-		return objArma;											
-	}
+	
+
 }
