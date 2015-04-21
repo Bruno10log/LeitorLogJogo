@@ -48,10 +48,14 @@ public enum LogDetail implements ILogDetail {
 		public void saveLog(StructFile objStruct) {
 			
 			PartidaDao objDao = new PartidaDao();
+			RankingDao objRankingDao = new RankingDao();
+			
 			SimpleDateFormat formatHour = new SimpleDateFormat("HH:mm:ss");  
 		
 			try {
 				objDao.finalizar(formatHour.parse(objStruct.getHora()));
+				objRankingDao.atualizarRanking();
+				
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}

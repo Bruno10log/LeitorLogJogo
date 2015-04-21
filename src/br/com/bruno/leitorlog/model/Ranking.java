@@ -12,7 +12,8 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name="Ranking.findUser",query="SELECT r FROM Ranking r WHERE r.partida = :partida AND r.user = :user")
+	@NamedQuery(name="Ranking.findUser", query="SELECT r FROM Ranking r WHERE r.partida = :partida AND r.user = :user"),
+	@NamedQuery(name="Ranking.findAllUsers", query="SELECT r FROM Ranking r WHERE r.partida = :partida")
 })
 public class Ranking {
 	
@@ -24,8 +25,8 @@ public class Ranking {
 
 	private String user;
 	
-	private int qtdMatou;
-	private int qtdMorreu;
+	private long qtdMatou;
+	private long qtdMorreu;
 	
 	public Ranking() {
 	}
@@ -37,19 +38,19 @@ public class Ranking {
 		this.qtdMorreu = qtdMorreu;
 	}
 	
-	public int getQtdAssassinatos() {
+	public long getQtdAssassinatos() {
 		return qtdMatou;
 	}
 	
-	public void setQtdAssassinatos(int qtdMatou) {
+	public void setQtdAssassinatos(long qtdMatou) {
 		this.qtdMatou = qtdMatou;
 	}
 
-	public int getQtdMortes() {
+	public long getQtdMortes() {
 		return qtdMorreu;
 	}
 
-	public void setQtdMortes(int qtdMortes) {
+	public void setQtdMortes(long qtdMortes) {
 		this.qtdMorreu = qtdMortes;
 	}
 
