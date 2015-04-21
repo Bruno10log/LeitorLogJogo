@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import br.com.bruno.leitorlog.config.ConstantsLog;
 import br.com.bruno.leitorlog.model.JPAUtil;
 import br.com.bruno.leitorlog.model.Ranking;
+import br.com.bruno.leitorlog.model.RankingPartida;
 
 public class RankingDao {
 	
@@ -43,7 +44,6 @@ public class RankingDao {
 		
 	}
 	
-	
 	public Ranking findUser(String user) {
 		EntityManager em = JPAUtil.getEntityManager();
 	    Ranking objRanking = null;
@@ -59,13 +59,13 @@ public class RankingDao {
 	       return objRanking;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void atualizarRanking() {
 	
 		EntityManager em = JPAUtil.getEntityManager();
 		long qtdMatou = 0;
 		long qtdMorreu = 0;
 		
-		@SuppressWarnings("unchecked")
 		List<Ranking> listaRanking = em.createNamedQuery("Ranking.findAllUsers")
 				                                .setParameter("partida", PartidaDao.objPartida)
 				                                .getResultList();
@@ -88,5 +88,17 @@ public class RankingDao {
 			salvar(objRanking);			
 		}
 	}
-
+	
+	public List<RankingPartida> getRanking() {
+		
+		EntityManager em = JPAUtil.getEntityManager();
+		
+		List<RankingPartida> listaRanking = em.createNamedQuery("Ranking.findRanking")
+											.setParameter("partida", PartidaDao.objPartida)
+											.getResultList();
+		
+		return listaRanking;
+	}
+	
+	
 }

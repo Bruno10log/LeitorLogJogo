@@ -12,8 +12,6 @@ public class StructFile extends Struct {
 	private char[] separador = new char[3];
 	private char[] info = new char[50];
 	
-	private LogDetail type;
-	
 	public StructFile(String linha){
 		
 		try {
@@ -24,7 +22,7 @@ public class StructFile extends Struct {
 			
 			data = linha.substring(0,10).toCharArray();
 			hora = linha.substring(10,19).toCharArray();
-			separador = linha.substring(19,22).toCharArray();
+			setSeparador(linha.substring(19,22).toCharArray());
 			info = linha.substring(22,linha.length() ).toCharArray();
 			
 		} catch(NullPointerException e) {
@@ -69,12 +67,13 @@ public class StructFile extends Struct {
 			return null;
 		}
 	}
-	
 
-	/*
-		23/04/2013 15:34:22 - New match 11348965 has started
-		23/04/2013 15:36:04 - Roman killed Nick using M16
-		23/04/2013 15:36:33 - <WORLD> killed Nick by DROWN
-		23/04/2013 15:39:22 - Match 11348965 has ended
-	 */
+	public char[] getSeparador() {
+		return separador;
+	}
+
+	public void setSeparador(char[] separador) {
+		this.separador = separador;
+	}
+	
 }

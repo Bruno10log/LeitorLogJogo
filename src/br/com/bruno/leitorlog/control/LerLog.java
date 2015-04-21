@@ -58,6 +58,10 @@ public class LerLog {
 		objFile = new StructFile(log);
 		processarInfo(objFile);
 		
+		log = "23/04/2013 15:36:40 - Nick killed Roman using M16";
+		objFile = new StructFile(log);
+		processarInfo(objFile);
+		
 		log = "23/04/2013 15:39:22 - Match 11348969 has ended";
 		objFile = new StructFile(log);
 		processarInfo(objFile);
@@ -68,8 +72,4 @@ public class LerLog {
 		objFile.getType().saveLog(objFile);	
 	}
 	
-	public void gerarRanking() {
-		
-	
-	}
 }

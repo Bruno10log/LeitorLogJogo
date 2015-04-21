@@ -9,6 +9,7 @@ import br.com.bruno.leitorlog.dao.RankingDao;
 import br.com.bruno.leitorlog.data.Acao;
 import br.com.bruno.leitorlog.data.Match;
 import br.com.bruno.leitorlog.file.StructFile;
+import br.com.bruno.leitorlog.view.ShowRanking;
 
 public enum LogDetail implements ILogDetail {
 	
@@ -55,10 +56,13 @@ public enum LogDetail implements ILogDetail {
 			try {
 				objDao.finalizar(formatHour.parse(objStruct.getHora()));
 				objRankingDao.atualizarRanking();
-				
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
+			
+			ShowRanking objShow = new ShowRanking();
+			
+			objShow.montaRanking();
 			
 		}
 		

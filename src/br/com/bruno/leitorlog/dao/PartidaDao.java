@@ -39,20 +39,4 @@ public class PartidaDao {
 		
 		em.close();
 	}
-	
-	/*
-	public Partida consultarPorId(Long id) {
-	    EntityManager entityManager = JPAUtil.getEntityManager();
-	    Partida objPartida = null;
-	    try {
-	      //Consulta uma pessoa pelo seu ID.
-	      objPartida = entityManager.find(Partida.class, id);
-	    } finally {
-	      entityManager.close();
-	    }
-	    return objPartida;
-	} */
-	
-	
-	
 }
