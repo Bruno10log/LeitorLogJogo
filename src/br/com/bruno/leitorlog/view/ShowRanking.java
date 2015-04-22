@@ -5,6 +5,7 @@ import java.util.List;
 import br.com.bruno.leitorlog.consultas.ArmaFavorita;
 import br.com.bruno.leitorlog.consultas.RankingPartida;
 import br.com.bruno.leitorlog.dao.LogPartidaDao;
+import br.com.bruno.leitorlog.dao.PartidaDao;
 import br.com.bruno.leitorlog.dao.RankingDao;
 
 public class ShowRanking {
@@ -16,7 +17,7 @@ public class ShowRanking {
 		List<RankingPartida> listaRanking = objDao.getRanking();
 		
 		
-		System.out.println("---------------------------- RANKING DA PARTIDA ------------------------------------");
+		System.out.println("---------------------------- RANKING DA PARTIDA : " + PartidaDao.objPartida.getIdPartida() + " ------------------------------------");
 		System.out.println("LUGAR              |JOGADOR            |Matou              |Foi Morto          |Pontos              |Awards             ");
 		
 		

@@ -97,9 +97,9 @@ public class LogPartidaDao {
 
 	public int getMax(int[] mortes){
 	       
-		 int max = 0;//aqui a variável max recebe o valor do primeiro item do array    
-         for (int i = 1; i < mortes.length; i++) {//aqui a iteração irá ocorrer    
-            if (mortes[i] > max){ //caso o valor da posição i seja maior que o valor de max, max será substituído pelo valor da i-ésima posição.    
+		 int max = 0;   
+         for (int i = 1; i < mortes.length; i++) { 
+            if (mortes[i] > max){   
                 max = mortes[i];   
             }  
          }    
