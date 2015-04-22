@@ -13,10 +13,9 @@ public class PartidaDao {
 	
 	public static Partida objPartida = null;
 
-	public void salvar(Match objMatch) {
+	public void salvar(Partida objPartida) {
 		
-		objPartida = new Partida(objMatch.getIdMatch(), objMatch.getData() ,objMatch.getHora());
-		EntityManager em = JPAUtil.getEntityManager();
+		EntityManager em = JPAUtil.getEntityManager();		
 		
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -24,6 +23,18 @@ public class PartidaDao {
 		tx.commit();
 		
 		em.close();
+	}
+	
+	public void salvar(Match objMatch) {
+		
+		objPartida = findPartida(objMatch.getIdMatch());
+		
+		if(objPartida != null) {
+			removePartida(objPartida);
+		}
+		
+		objPartida = new Partida(objMatch.getIdMatch(), objMatch.getData() ,objMatch.getHora());
+		salvar(objPartida);
 	}
 	
 	public void finalizar(Date horaFim) {
@@ -39,4 +50,33 @@ public class PartidaDao {
 		
 		em.close();
 	}
+	
+	public Partida findPartida(long idPartida) {
+		
+		EntityManager em = JPAUtil.getEntityManager();
+		
+		Partida objPartida = em.find(Partida.class, idPartida);
+		
+		return objPartida;
+	}
+	
+	public void removePartida(Partida partida) {
+		
+		LogPartidaDao objDao = new LogPartidaDao();
+		RankingDao objRankingDao = new RankingDao();
+		
+		objDao.limparLog(partida);
+		objRankingDao.limpaRanking(partida);
+		
+		EntityManager em = JPAUtil.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		partida = em.merge(partida);
+		em.remove(partida);
+		tx.commit();
+		
+		em.close();
+	}
+
+	
 }

@@ -12,6 +12,7 @@ import br.com.bruno.leitorlog.consultas.ArmaFavorita;
 import br.com.bruno.leitorlog.data.Acao;
 import br.com.bruno.leitorlog.model.JPAUtil;
 import br.com.bruno.leitorlog.model.LogPartida;
+import br.com.bruno.leitorlog.model.Partida;
 import br.com.bruno.leitorlog.model.Ranking;
 
 public class LogPartidaDao {
@@ -107,4 +108,16 @@ public class LogPartidaDao {
          return max;
 	}
 	
+	
+	public void limparLog(Partida partida) {
+	
+		EntityManager em = JPAUtil.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.createQuery("delete from LogPartida l where l.partida = :partida")
+									.setParameter("partida", partida)
+									.executeUpdate();
+		tx.commit();
+		em.close();
+	}
 }

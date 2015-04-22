@@ -24,6 +24,7 @@ public class Main {
 			System.out.println("Arquivo não encontrado, verifique o arquivo de properties");
 			throw new FileNotFoundException();
 		}
+		
 		LerLog objler = new LerLog();
 		ShowRanking objShow = new ShowRanking();
 		
@@ -31,4 +32,5 @@ public class Main {
 		objShow.montaRanking();
 	
 	}
+	
 }

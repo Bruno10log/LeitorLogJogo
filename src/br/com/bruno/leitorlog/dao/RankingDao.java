@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import br.com.bruno.leitorlog.config.ConstantsLog;
 import br.com.bruno.leitorlog.consultas.RankingPartida;
 import br.com.bruno.leitorlog.model.JPAUtil;
+import br.com.bruno.leitorlog.model.Partida;
 import br.com.bruno.leitorlog.model.Ranking;
 
 public class RankingDao {
@@ -109,6 +110,17 @@ public class RankingDao {
 		if(objRanking.getQtdMortes() == 0) {
 			objRanking.setAwards(1);
 		}
+	}
+	
+	public void limpaRanking(Partida partida) {
+		EntityManager em = JPAUtil.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.createQuery("delete from Ranking r where r.partida = :partida")
+									.setParameter("partida", partida)
+									.executeUpdate();
+		tx.commit();
+		em.close();
 	}
 
 }
