@@ -3,6 +3,8 @@ package br.com.bruno.leitorlog.control;
 import java.io.File;
 import java.util.Scanner;
 
+import javax.management.RuntimeErrorException;
+
 import br.com.bruno.leitorlog.file.StructFile;
 
 public class LerLog {
@@ -26,7 +28,11 @@ public class LerLog {
 	}
 	
 	private static void processarInfo(StructFile objFile) {
-		objFile.getType().saveLog(objFile);	
+		try {
+			objFile.getType().saveLog(objFile);	
+		} catch(Exception e) {
+			throw new RuntimeException("Problemas ao processar o log.", e);
+		}
 	}
 	
 }

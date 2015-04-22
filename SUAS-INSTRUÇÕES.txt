@@ -1,2 +1,15 @@
-Coloque aqui suas instruções ou comentários que ache útil/relevantes para possamos ler 
-quando estivermos avaliando a sua solução
+Leitor de log, desenvolvido usando JPA , implementação: EclipseLink acessando o Mysql. 
+
+Passos para execução:
+
+1 - Configurar os parâmetros: url, user e password no persistence.xml, de acordo com as configurações do ambiente onde será executado.
+
+2 - Criar o schema 'testeAmil' no mysql
+
+3 - Configurar o caminho do arquivo de log do jogo, no arquivo: leitor.properties. Como no exemplo :
+ex.: prop.file = C:\\jogo.txt
+
+4 - Executar a classe br.com.bruno.leitorlog.view.Main
+
+
+ 
